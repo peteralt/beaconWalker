@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A54DF0BD1D9188C60078EE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DF0BC1D9188C60078EE52 /* AppDelegate.swift */; };
+		A54DF0BF1D9188C60078EE52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DF0BE1D9188C60078EE52 /* ViewController.swift */; };
+		A54DF0C21D9188C60078EE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54DF0C01D9188C60078EE52 /* Main.storyboard */; };
+		A54DF0C51D9188C60078EE52 /* beaconWalker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54DF0C31D9188C60078EE52 /* beaconWalker.xcdatamodeld */; };
+		A54DF0C71D9188C60078EE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A54DF0C61D9188C60078EE52 /* Assets.xcassets */; };
+		A54DF0CA1D9188C60078EE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54DF0C81D9188C60078EE52 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A54DF0B91D9188C60078EE52 /* beaconWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beaconWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54DF0BC1D9188C60078EE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A54DF0BE1D9188C60078EE52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A54DF0C11D9188C60078EE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A54DF0C41D9188C60078EE52 /* beaconWalker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = beaconWalker.xcdatamodel; sourceTree = "<group>"; };
+		A54DF0C61D9188C60078EE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A54DF0C91D9188C60078EE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A54DF0CB1D9188C60078EE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A54DF0B61D9188C60078EE52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A54DF0B01D9188C60078EE52 = {
+			isa = PBXGroup;
+			children = (
+				A54DF0BB1D9188C60078EE52 /* beaconWalker */,
+				A54DF0BA1D9188C60078EE52 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A54DF0BA1D9188C60078EE52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A54DF0B91D9188C60078EE52 /* beaconWalker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A54DF0BB1D9188C60078EE52 /* beaconWalker */ = {
+			isa = PBXGroup;
+			children = (
+				A54DF0BC1D9188C60078EE52 /* AppDelegate.swift */,
+				A54DF0BE1D9188C60078EE52 /* ViewController.swift */,
+				A54DF0C01D9188C60078EE52 /* Main.storyboard */,
+				A54DF0C61D9188C60078EE52 /* Assets.xcassets */,
+				A54DF0C81D9188C60078EE52 /* LaunchScreen.storyboard */,
+				A54DF0CB1D9188C60078EE52 /* Info.plist */,
+				A54DF0C31D9188C60078EE52 /* beaconWalker.xcdatamodeld */,
+			);
+			path = beaconWalker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A54DF0B81D9188C60078EE52 /* beaconWalker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A54DF0CE1D9188C60078EE52 /* Build configuration list for PBXNativeTarget "beaconWalker" */;
+			buildPhases = (
+				A54DF0B51D9188C60078EE52 /* Sources */,
+				A54DF0B61D9188C60078EE52 /* Frameworks */,
+				A54DF0B71D9188C60078EE52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = beaconWalker;
+			productName = beaconWalker;
+			productReference = A54DF0B91D9188C60078EE52 /* beaconWalker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A54DF0B11D9188C60078EE52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Philadelphia Museum of Art";
+				TargetAttributes = {
+					A54DF0B81D9188C60078EE52 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = A54DF0B41D9188C60078EE52 /* Build configuration list for PBXProject "beaconWalker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A54DF0B01D9188C60078EE52;
+			productRefGroup = A54DF0BA1D9188C60078EE52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A54DF0B81D9188C60078EE52 /* beaconWalker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A54DF0B71D9188C60078EE52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A54DF0CA1D9188C60078EE52 /* LaunchScreen.storyboard in Resources */,
+				A54DF0C71D9188C60078EE52 /* Assets.xcassets in Resources */,
+				A54DF0C21D9188C60078EE52 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A54DF0B51D9188C60078EE52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A54DF0BF1D9188C60078EE52 /* ViewController.swift in Sources */,
+				A54DF0C51D9188C60078EE52 /* beaconWalker.xcdatamodeld in Sources */,
+				A54DF0BD1D9188C60078EE52 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A54DF0C01D9188C60078EE52 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A54DF0C11D9188C60078EE52 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A54DF0C81D9188C60078EE52 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A54DF0C91D9188C60078EE52 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A54DF0CC1D9188C60078EE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A54DF0CD1D9188C60078EE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A54DF0CF1D9188C60078EE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = beaconWalker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A54DF0D01D9188C60078EE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = beaconWalker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A54DF0B41D9188C60078EE52 /* Build configuration list for PBXProject "beaconWalker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A54DF0CC1D9188C60078EE52 /* Debug */,
+				A54DF0CD1D9188C60078EE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A54DF0CE1D9188C60078EE52 /* Build configuration list for PBXNativeTarget "beaconWalker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A54DF0CF1D9188C60078EE52 /* Debug */,
+				A54DF0D01D9188C60078EE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A54DF0C31D9188C60078EE52 /* beaconWalker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A54DF0C41D9188C60078EE52 /* beaconWalker.xcdatamodel */,
+			);
+			currentVersion = A54DF0C41D9188C60078EE52 /* beaconWalker.xcdatamodel */;
+			path = beaconWalker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A54DF0B11D9188C60078EE52 /* Project object */;
+}
