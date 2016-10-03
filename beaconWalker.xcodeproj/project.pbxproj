@@ -7,15 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A53EE4601DA2E28F00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
+		A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
+		A53EE4661DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
+		A53EE4681DA30BED00BB30A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4671DA30BED00BB30A8 /* Helper.swift */; };
 		A54DF0BD1D9188C60078EE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DF0BC1D9188C60078EE52 /* AppDelegate.swift */; };
 		A54DF0BF1D9188C60078EE52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54DF0BE1D9188C60078EE52 /* ViewController.swift */; };
 		A54DF0C21D9188C60078EE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54DF0C01D9188C60078EE52 /* Main.storyboard */; };
 		A54DF0C51D9188C60078EE52 /* beaconWalker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54DF0C31D9188C60078EE52 /* beaconWalker.xcdatamodeld */; };
 		A54DF0C71D9188C60078EE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A54DF0C61D9188C60078EE52 /* Assets.xcassets */; };
 		A54DF0CA1D9188C60078EE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54DF0C81D9188C60078EE52 /* LaunchScreen.storyboard */; };
+		A5D475BA1DA2A89000026A71 /* beacons_test.json in Resources */ = {isa = PBXBuildFile; fileRef = A5D475B91DA2A89000026A71 /* beacons_test.json */; };
+		A5D475BB1DA2ABD200026A71 /* beacons_test.json in Resources */ = {isa = PBXBuildFile; fileRef = A5D475B91DA2A89000026A71 /* beacons_test.json */; };
+		A5D475BE1DA2B04800026A71 /* beaconTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D475BD1DA2B04800026A71 /* beaconTableView.swift */; };
+		A5D475C01DA2B29000026A71 /* beaconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D475BF1DA2B29000026A71 /* beaconCell.swift */; };
+		A5EB20D71D9AF79D00AA2DF3 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ECDE481D91AAF700FADD78 /* Beacon.swift */; };
+		A5ECDE411D91A9E700FADD78 /* beaconWalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ECDE401D91A9E700FADD78 /* beaconWalkerTests.swift */; };
+		A5ECDE491D91AAF700FADD78 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ECDE481D91AAF700FADD78 /* Beacon.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A5ECDE431D91A9E700FADD78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A54DF0B11D9188C60078EE52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A54DF0B81D9188C60078EE52;
+			remoteInfo = beaconWalker;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconSequence.swift; sourceTree = "<group>"; };
+		A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconSequenceDelegate.swift; sourceTree = "<group>"; };
+		A53EE4671DA30BED00BB30A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		A54DF0B91D9188C60078EE52 /* beaconWalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beaconWalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54DF0BC1D9188C60078EE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54DF0BE1D9188C60078EE52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,10 +48,24 @@
 		A54DF0C61D9188C60078EE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A54DF0C91D9188C60078EE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A54DF0CB1D9188C60078EE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5D475B91DA2A89000026A71 /* beacons_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beacons_test.json; sourceTree = "<group>"; };
+		A5D475BD1DA2B04800026A71 /* beaconTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beaconTableView.swift; sourceTree = "<group>"; };
+		A5D475BF1DA2B29000026A71 /* beaconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = beaconCell.swift; sourceTree = "<group>"; };
+		A5ECDE3E1D91A9E700FADD78 /* beaconWalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaconWalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5ECDE401D91A9E700FADD78 /* beaconWalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beaconWalkerTests.swift; sourceTree = "<group>"; };
+		A5ECDE421D91A9E700FADD78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5ECDE481D91AAF700FADD78 /* Beacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A54DF0B61D9188C60078EE52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5ECDE3B1D91A9E700FADD78 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A54DF0BB1D9188C60078EE52 /* beaconWalker */,
+				A5ECDE3F1D91A9E700FADD78 /* beaconWalkerTests */,
 				A54DF0BA1D9188C60078EE52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				A54DF0B91D9188C60078EE52 /* beaconWalker.app */,
+				A5ECDE3E1D91A9E700FADD78 /* beaconWalkerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +96,9 @@
 		A54DF0BB1D9188C60078EE52 /* beaconWalker */ = {
 			isa = PBXGroup;
 			children = (
+				A5D475C11DA2BA5200026A71 /* Helper */,
+				A5D475BC1DA2B02100026A71 /* TableView */,
+				A5D475B81DA2A89000026A71 /* data */,
 				A54DF0BC1D9188C60078EE52 /* AppDelegate.swift */,
 				A54DF0BE1D9188C60078EE52 /* ViewController.swift */,
 				A54DF0C01D9188C60078EE52 /* Main.storyboard */,
@@ -63,8 +106,45 @@
 				A54DF0C81D9188C60078EE52 /* LaunchScreen.storyboard */,
 				A54DF0CB1D9188C60078EE52 /* Info.plist */,
 				A54DF0C31D9188C60078EE52 /* beaconWalker.xcdatamodeld */,
+				A5ECDE481D91AAF700FADD78 /* Beacon.swift */,
+				A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */,
+				A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */,
 			);
 			path = beaconWalker;
+			sourceTree = "<group>";
+		};
+		A5D475B81DA2A89000026A71 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				A5D475B91DA2A89000026A71 /* beacons_test.json */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		A5D475BC1DA2B02100026A71 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				A5D475BD1DA2B04800026A71 /* beaconTableView.swift */,
+				A5D475BF1DA2B29000026A71 /* beaconCell.swift */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		A5D475C11DA2BA5200026A71 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				A53EE4671DA30BED00BB30A8 /* Helper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		A5ECDE3F1D91A9E700FADD78 /* beaconWalkerTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5ECDE401D91A9E700FADD78 /* beaconWalkerTests.swift */,
+				A5ECDE421D91A9E700FADD78 /* Info.plist */,
+			);
+			path = beaconWalkerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +167,24 @@
 			productReference = A54DF0B91D9188C60078EE52 /* beaconWalker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A5ECDE3D1D91A9E700FADD78 /* beaconWalkerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5ECDE471D91A9E700FADD78 /* Build configuration list for PBXNativeTarget "beaconWalkerTests" */;
+			buildPhases = (
+				A5ECDE3A1D91A9E700FADD78 /* Sources */,
+				A5ECDE3B1D91A9E700FADD78 /* Frameworks */,
+				A5ECDE3C1D91A9E700FADD78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5ECDE441D91A9E700FADD78 /* PBXTargetDependency */,
+			);
+			name = beaconWalkerTests;
+			productName = beaconWalkerTests;
+			productReference = A5ECDE3E1D91A9E700FADD78 /* beaconWalkerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +197,10 @@
 				TargetAttributes = {
 					A54DF0B81D9188C60078EE52 = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					A5ECDE3D1D91A9E700FADD78 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = A54DF0B81D9188C60078EE52;
 					};
 				};
 			};
@@ -116,6 +218,7 @@
 			projectRoot = "";
 			targets = (
 				A54DF0B81D9188C60078EE52 /* beaconWalker */,
+				A5ECDE3D1D91A9E700FADD78 /* beaconWalkerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +231,15 @@
 				A54DF0CA1D9188C60078EE52 /* LaunchScreen.storyboard in Resources */,
 				A54DF0C71D9188C60078EE52 /* Assets.xcassets in Resources */,
 				A54DF0C21D9188C60078EE52 /* Main.storyboard in Resources */,
+				A5D475BA1DA2A89000026A71 /* beacons_test.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5ECDE3C1D91A9E700FADD78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5D475BB1DA2ABD200026A71 /* beacons_test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,13 +250,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D475BE1DA2B04800026A71 /* beaconTableView.swift in Sources */,
+				A53EE4661DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift in Sources */,
 				A54DF0BF1D9188C60078EE52 /* ViewController.swift in Sources */,
 				A54DF0C51D9188C60078EE52 /* beaconWalker.xcdatamodeld in Sources */,
 				A54DF0BD1D9188C60078EE52 /* AppDelegate.swift in Sources */,
+				A53EE4681DA30BED00BB30A8 /* Helper.swift in Sources */,
+				A53EE4601DA2E28F00BB30A8 /* BeaconSequence.swift in Sources */,
+				A5ECDE491D91AAF700FADD78 /* Beacon.swift in Sources */,
+				A5D475C01DA2B29000026A71 /* beaconCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5ECDE3A1D91A9E700FADD78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */,
+				A5ECDE411D91A9E700FADD78 /* beaconWalkerTests.swift in Sources */,
+				A5EB20D71D9AF79D00AA2DF3 /* Beacon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5ECDE441D91A9E700FADD78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A54DF0B81D9188C60078EE52 /* beaconWalker */;
+			targetProxy = A5ECDE431D91A9E700FADD78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A54DF0C01D9188C60078EE52 /* Main.storyboard */ = {
@@ -273,6 +409,30 @@
 			};
 			name = Release;
 		};
+		A5ECDE451D91A9E700FADD78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = beaconWalkerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalkerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/beaconWalker.app/beaconWalker";
+			};
+			name = Debug;
+		};
+		A5ECDE461D91A9E700FADD78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = beaconWalkerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalkerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/beaconWalker.app/beaconWalker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -292,6 +452,16 @@
 				A54DF0D01D9188C60078EE52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5ECDE471D91A9E700FADD78 /* Build configuration list for PBXNativeTarget "beaconWalkerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5ECDE451D91A9E700FADD78 /* Debug */,
+				A5ECDE461D91A9E700FADD78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
