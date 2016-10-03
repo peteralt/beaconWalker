@@ -76,4 +76,13 @@ class Helper {
         let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
         return shortVersionString
     }
+    
+    struct Platform {
+        
+        static var isSimulator: Bool {
+            return TARGET_OS_SIMULATOR != 0 // Use this line in Xcode 7 or newer
+//            return TARGET_IPHONE_SIMULATOR != 0 // Use this line in Xcode 6
+        }
+        
+    }
 }
