@@ -1,0 +1,31 @@
+{
+    "devices": [
+                {
+                "alias": "Alias #1",
+                "major": 46453,
+                "minor": 61315,
+                "uniqueId": "OlDU",
+                "duration": 4.75
+                },
+                {
+                "alias": "Alias #2",
+                "major": 54733,
+                "minor": 24192,
+                "uniqueId": "x0lw"
+                },
+                {
+                "alias": "Alias #3",
+                "major": 53827,
+                "minor": 19489,
+                "uniqueId": "et3h"
+                }
+                ],
+    "searchMeta": {
+        "maxResult": 999,
+        "nextResults": "",
+        "order": "ASC",
+        "orderBy": "created",
+        "prevResults": "",
+        "startIndex": 0
+    }
+}
