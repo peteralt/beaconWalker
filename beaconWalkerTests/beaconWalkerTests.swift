@@ -33,13 +33,13 @@ class beaconWalkerTests: XCTestCase {
     }
     
     func testLoadingBeaconCount() {
-        let _ = Beacon.load(true, completion: { beacons in
+        let _ = Beacon.load(true, filePath: nil, completion: { beacons in
             XCTAssertEqual(beacons.count, 3)
         })
     }
     
     func testLoadingBeaconDefinitions() {
-        let _ = Beacon.load(true, completion: { beacons in
+        let _ = Beacon.load(true, filePath:nil, completion: { beacons in
             for beacon in beacons {
                 XCTAssertNotNil(beacon.alias)
                 XCTAssertNotNil(beacon.major)

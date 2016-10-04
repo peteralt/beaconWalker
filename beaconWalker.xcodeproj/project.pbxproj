@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2D8F511DA342E000631B29 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
 		A53EE4601DA2E28F00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
 		A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
 		A53EE4661DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
@@ -192,14 +193,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Philadelphia Museum of Art";
 				TargetAttributes = {
 					A54DF0B81D9188C60078EE52 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GYM5NHJ654;
+						LastSwiftMigration = 0800;
 					};
 					A5ECDE3D1D91A9E700FADD78 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = GYM5NHJ654;
+						LastSwiftMigration = 0800;
 						TestTargetID = A54DF0B81D9188C60078EE52;
 					};
 				};
@@ -269,6 +274,7 @@
 				A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */,
 				A5ECDE411D91A9E700FADD78 /* beaconWalkerTests.swift in Sources */,
 				A5EB20D71D9AF79D00AA2DF3 /* Beacon.swift in Sources */,
+				8A2D8F511DA342E000631B29 /* BeaconSequenceDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,8 +322,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -362,8 +370,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -382,6 +392,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -391,10 +402,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GYM5NHJ654;
 				INFOPLIST_FILE = beaconWalker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peteralt.beaconWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -402,10 +415,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GYM5NHJ654;
 				INFOPLIST_FILE = beaconWalker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peteralt.beaconWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -413,10 +428,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = GYM5NHJ654;
 				INFOPLIST_FILE = beaconWalkerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalkerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/beaconWalker.app/beaconWalker";
 			};
 			name = Debug;
@@ -425,10 +442,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = GYM5NHJ654;
 				INFOPLIST_FILE = beaconWalkerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.philamuseum.beaconWalkerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/beaconWalker.app/beaconWalker";
 			};
 			name = Release;
