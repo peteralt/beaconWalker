@@ -23,6 +23,8 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     @IBOutlet weak var activeSequenceView: UIView!
     @IBOutlet weak var activeSequenceHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var currentFileLabel: UILabel!
+    
     
     private var sequencePlaying = false
     private var beaconSequencer : BeaconSequence!
@@ -40,16 +42,23 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.activeSequenceHeightConstraint.constant = 0
         
         self.versionLabel.text = Helper.getVersion()
+        self.currentFileLabel.text = ""
         
-        let _ = Beacon.load(true, completion: { beacons in
-            print("beacons loaded: \(beacons.count)")
-            dispatch_async(dispatch_get_main_queue()) {
-                self.beaconTableView.reloadData()
-                self.beaconSequencer = BeaconSequence(beacons: beacons, delegate: self)
-                
-                self.checkAppRequirements()
+        // Copying a demo JSON file on first launch
+        let bundlePath = NSBundle.mainBundle().pathForResource("beacons_test", ofType: "json")
+        let destPath = Helper.getDocumentsDirectory().stringByAppendingString("/beacons_demo.json")
+        
+        if !NSFileManager.defaultManager().fileExistsAtPath(destPath) {
+            do {
+                try NSFileManager.defaultManager().copyItemAtPath(bundlePath!, toPath: destPath)
+            } catch {
+                print(error)
             }
-        })
+        }
+        
+        self.checkAppRequirements()
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,6 +66,8 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         
         self.bluetoothStatusView.layer.cornerRadius = self.bluetoothStatusView.frame.width / 2
         self.accessStatusView.layer.cornerRadius = self.accessStatusView.frame.width / 2
+        
+        self.choseBeaconFile()
 
     }
     
@@ -70,7 +81,39 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.view.layoutIfNeeded()
     }
     
+    @IBAction func choseBeaconFile() {
+        let controller = UIAlertController(title: "Choose your data file", message: "Use iTunes to add JSON data files.", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        if let files = Helper.getAllJSONFiles() {
+        
+            for file in files {
+                controller.addAction(UIAlertAction(title: "\((file.URLByDeletingPathExtension?.lastPathComponent)!)", style: UIAlertActionStyle.Default, handler: { action in
+                    
+                    self.currentFileLabel.text = (file.URLByDeletingPathExtension?.lastPathComponent)!
+                    
+                    let _ = Beacon.load(filePath: file, completion: { beacons in
+                        print("beacons loaded: \(beacons.count)")
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.beaconTableView.reloadData()
+                            self.beaconSequencer = BeaconSequence(beacons: beacons, delegate: self)
+                            
+                        }
+                    })
+                    
+                }))
+            }
+            controller.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+            
+        }
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func toggleSequence(sender: AnyObject) {
+        
+        if !(Beacon.beacons.count > 0) {
+            return
+        }
+        
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
         }
@@ -158,10 +201,10 @@ extension ViewController {
         if CLLocationManager.locationServicesEnabled() {
             switch(CLLocationManager.authorizationStatus()) {
             case .NotDetermined, .Restricted, .Denied:
-                print("No access")
+                print("Location Services: No access")
                 return false
             case .AuthorizedAlways, .AuthorizedWhenInUse:
-                print("Access")
+                print("Location Services: Access")
                 return true
             }
         } else {
