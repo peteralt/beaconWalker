@@ -11,7 +11,7 @@ import Foundation
 class Beacon {
     
     private let defaultUUID = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
-    private let defaultDuration : Double = 2.0
+    private let defaultDuration : Double = 5.0
     
     let major: Int
     let minor: Int
