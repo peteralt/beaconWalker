@@ -45,7 +45,6 @@ class Beacon {
     
     private static let testFilePath = NSBundle.mainBundle().pathForResource("beacons_test", ofType: "json")
     
-    private static let urlRemote : NSURL = NSURLComponents(string: "http://192.168.8.28/temp/beacons.json")!.URL!
     private static let urlForTest : NSURL = NSURL.fileURLWithPath(testFilePath!)
     
     private static let session: NSURLSession = NSURLSession.sharedSession()
@@ -60,14 +59,14 @@ class Beacon {
 
     extension Beacon {
         
-        static func load(forTesting: Bool = false, completion: ([Beacon]) -> Void) {
+        static func load(forTesting: Bool = false, filePath: NSURL?, completion: ([Beacon]) -> Void) {
             
             var url : NSURL!
             
             if forTesting {
                 url = self.urlForTest
             } else {
-                url = self.urlRemote
+                url = filePath
             }
             
             let task = session.dataTaskWithURL(url, completionHandler: { data, _,_ in
