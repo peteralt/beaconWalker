@@ -77,6 +77,26 @@ class Helper {
         return shortVersionString
     }
     
+    static func getDocumentsDirectory() -> String {
+        let dir = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
+        return dir.path!
+    }
+    
+    static func getAllJSONFiles() -> [NSURL]? {
+        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        
+        do {
+            // Get the directory contents urls (including subfolders urls)
+            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
+            
+            return directoryContents.filter{ $0.pathExtension == "json" }
+            
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        return nil
+    }
+    
     struct Platform {
         
         static var isSimulator: Bool {
