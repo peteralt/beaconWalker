@@ -62,17 +62,22 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     @IBAction func toggleSequence(sender: AnyObject) {
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
-            return
         }
         
         if !Helper.Platform.isSimulator {
         
-            if !(self.isBluetoothActive() && self.areLocationServicesAllowed()) {
+            if !self.isBluetoothActive() || !self.areLocationServicesAllowed() {
                 print("something isn't right, we need permissions")
                 let alertController = UIAlertController(title: "Please verify settings", message: "This app requires Bluetooth to be enabled and access to Location Services (while in use only).\nPlease verify settings and try again.", preferredStyle: .Alert)
                 let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
                 }
                 alertController.addAction(cancelAction)
+                
+                let settingsAction = UIAlertAction(title: "Go to Settings", style: .Default) { (action) in
+                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                }
+                alertController.addAction(settingsAction)
+                
                 self.presentViewController(alertController, animated: true) {}
                 return
             }
@@ -134,11 +139,24 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
 extension ViewController {
     
     private func isBluetoothActive() -> Bool {
-        return self.peripheralManager.state == CBPeripheralManagerState.PoweredOn
+        return self.peripheralManager.state == .PoweredOn
     }
     
+    // http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled-swift-ios-9
     private func areLocationServicesAllowed() -> Bool {
-        return CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse
+        if CLLocationManager.locationServicesEnabled() {
+            switch(CLLocationManager.authorizationStatus()) {
+            case .NotDetermined, .Restricted, .Denied:
+                print("No access")
+                return false
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                print("Access")
+                return true
+            }
+        } else {
+            print("Location services are not enabled")
+            return false
+        }
     }
     
     private func animateActiveSequenceView() {
