@@ -37,8 +37,6 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.bluetoothStatusView.layer.cornerRadius = self.bluetoothStatusView.frame.width / 2
-        self.accessStatusView.layer.cornerRadius = self.accessStatusView.frame.width / 2
         self.activeSequenceHeightConstraint.constant = 0
         
         self.versionLabel.text = Helper.getVersion()
@@ -54,9 +52,22 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         })
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.bluetoothStatusView.layer.cornerRadius = self.bluetoothStatusView.frame.width / 2
+        self.accessStatusView.layer.cornerRadius = self.accessStatusView.frame.width / 2
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.view.layoutIfNeeded()
     }
     
     @IBAction func toggleSequence(sender: AnyObject) {
