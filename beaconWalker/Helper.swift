@@ -15,8 +15,8 @@ class Helper {
     
     struct Settings {
         static let beaconDemoFileName = "/beacons_demo.json"
-        static let beaconDefaultUUID = ""
-        static let beaconDefaultDuration = 5.0
+        static let beaconDefaultUUID = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
+        static let beaconDefaultDuration : Double = 5.0
     }
     
     //MARK: Colors
