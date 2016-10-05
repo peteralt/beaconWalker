@@ -10,33 +10,30 @@ import Foundation
 
 class Beacon {
     
-    private let defaultUUID = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
-    private let defaultDuration : Double = 5.0
-    
     let major: Int
     let minor: Int
     let UUID: String
     let alias: String
-    let uniqueID: String
+    let uniqueID: String?
     let duration: Double
     
     var TTL: Float = 5
     
     var isActive : Bool = true
     
-    init(major: Int, minor: Int, uniqueID: String, UUID: String?, alias: String, duration: Double?) {
+    init(major: Int, minor: Int, uniqueID: String?, UUID: String?, alias: String, duration: Double?) {
         self.major = major
         self.minor = minor
         if UUID != nil {
             self.UUID = UUID!
         } else {
-            self.UUID = self.defaultUUID
+            self.UUID = Helper.Settings.beaconDefaultUUID
         }
         
         if duration != nil {
             self.duration = duration!
         } else {
-            self.duration = self.defaultDuration
+            self.duration = Helper.Settings.beaconDefaultDuration
         }
         
         self.uniqueID = uniqueID
@@ -77,8 +74,8 @@ class Beacon {
                     jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! NSDictionary
                     if let devices = jsonDictionary["devices"] as? NSArray {
                         for device in devices {
-                            if let major = device.valueForKey("major") as? Int, minor = device.valueForKey("minor") as? Int, alias = device.valueForKey("alias") as? String, uniqueID = device.valueForKey("uniqueId") as? String {
-                                let beacon = Beacon(major: major, minor: minor, uniqueID: uniqueID, UUID: nil, alias: alias, duration: device.valueForKey("duration") as? Double)
+                            if let major = device.valueForKey("major") as? Int, minor = device.valueForKey("minor") as? Int, alias = device.valueForKey("alias") as? String {
+                                let beacon = Beacon(major: major, minor: minor, uniqueID: device.valueForKey("uniqueId") as? String, UUID: device.valueForKey("UUID") as? String, alias: alias, duration: device.valueForKey("duration") as? Double)
                                 beacons.append(beacon)
                             }
                         }
@@ -90,5 +87,19 @@ class Beacon {
                 completion(beacons)
             })
             task.resume()
+        }
+        
+        static func createDemoFile() {
+            // Copying a demo JSON file on first launch
+            let bundlePath = NSBundle.mainBundle().pathForResource("beacons_test", ofType: "json")
+            let destPath = Helper.getDocumentsDirectory().stringByAppendingString(Helper.Settings.beaconDemoFileName)
+            
+            if !NSFileManager.defaultManager().fileExistsAtPath(destPath) {
+                do {
+                    try NSFileManager.defaultManager().copyItemAtPath(bundlePath!, toPath: destPath)
+                } catch {
+                    print(error)
+                }
+            }
         }
     }

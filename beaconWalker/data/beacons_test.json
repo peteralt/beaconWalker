@@ -5,19 +5,23 @@
                 "major": 46453,
                 "minor": 61315,
                 "uniqueId": "OlDU",
-                "duration": 4.75
+                "duration": 4.75,
+                "UUID": "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
                 },
                 {
                 "alias": "Alias #2",
                 "major": 54733,
                 "minor": 24192,
-                "uniqueId": "x0lw"
+                "uniqueId": null,
+                "duration": null,
+                "UUID": null
                 },
                 {
                 "alias": "Alias #3",
                 "major": 53827,
                 "minor": 19489,
-                "uniqueId": "et3h"
+                "uniqueId": "et3h",
+                "UUID": "0299ed07-62a8-4766-9787-63d80972b295"
                 }
                 ],
     "searchMeta": {

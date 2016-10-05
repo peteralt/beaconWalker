@@ -11,6 +11,14 @@ import UIKit
 
 class Helper {
     
+    //MARK: Settings
+    
+    struct Settings {
+        static let beaconDemoFileName = "/beacons_demo.json"
+        static let beaconDefaultUUID = ""
+        static let beaconDefaultDuration = 5.0
+    }
+    
     //MARK: Colors
     
     // color scheme: https://color.adobe.com/Summer-Twilight-color-theme-8675918/edit/?copy=true&base=2&rule=Custom&selected=0&name=Copy%20of%20Summer%20Twilight&mode=rgb&rgbvalues=0.23137254901960785,0.34901960784313724,0.41568627450980394,0.25882352941176473,0.4627450980392157,0.4627450980392157,0.24705882352941178,0.6039215686274509,0.5098039215686274,0.6313725490196078,0.803921568627451,0.45098039215686275,0.9254901960784314,0.8588235294117647,0.3764705882352941&swatchOrder=0,1,2,3,4
@@ -77,6 +85,8 @@ class Helper {
         return shortVersionString
     }
     
+    //MARK: Filesystem
+    
     static func getDocumentsDirectory() -> String {
         let dir = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         return dir.path!
@@ -97,11 +107,12 @@ class Helper {
         return nil
     }
     
+    //MARK: Simulator detection
+    
     struct Platform {
         
         static var isSimulator: Bool {
             return TARGET_OS_SIMULATOR != 0 // Use this line in Xcode 7 or newer
-//            return TARGET_IPHONE_SIMULATOR != 0 // Use this line in Xcode 6
         }
         
     }

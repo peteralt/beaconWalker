@@ -32,9 +32,6 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     private let locationManager = CLLocationManager()
     private let peripheralManager = CBPeripheralManager()
     
-    private let defaultUUID = "f7826da6-4fa2-4e98-8024-bc5b71e0893e"
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,17 +41,7 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.versionLabel.text = Helper.getVersion()
         self.currentFileLabel.text = ""
         
-        // Copying a demo JSON file on first launch
-        let bundlePath = NSBundle.mainBundle().pathForResource("beacons_test", ofType: "json")
-        let destPath = Helper.getDocumentsDirectory().stringByAppendingString("/beacons_demo.json")
-        
-        if !NSFileManager.defaultManager().fileExistsAtPath(destPath) {
-            do {
-                try NSFileManager.defaultManager().copyItemAtPath(bundlePath!, toPath: destPath)
-            } catch {
-                print(error)
-            }
-        }
+        Beacon.createDemoFile()
         
         self.checkAppRequirements()
         

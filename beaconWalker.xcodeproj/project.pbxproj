@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A2D8F511DA342E000631B29 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
+		8A571EE61DA5519E00443893 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4671DA30BED00BB30A8 /* Helper.swift */; };
 		A53EE4601DA2E28F00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
 		A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
 		A53EE4661DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
@@ -273,6 +274,7 @@
 			files = (
 				A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */,
 				A5ECDE411D91A9E700FADD78 /* beaconWalkerTests.swift in Sources */,
+				8A571EE61DA5519E00443893 /* Helper.swift in Sources */,
 				A5EB20D71D9AF79D00AA2DF3 /* Beacon.swift in Sources */,
 				8A2D8F511DA342E000631B29 /* BeaconSequenceDelegate.swift in Sources */,
 			);
