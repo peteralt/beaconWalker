@@ -66,6 +66,7 @@ extension BeaconSequence {
     }
     
     private func getDelayForBeaconAtIndex(index: Int) -> Double {
+        print("delay for beacon at index \(index): \(self.beacons[index].duration)")
         return self.beacons[index].duration
     }
     
