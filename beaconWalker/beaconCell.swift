@@ -13,6 +13,7 @@ class beaconCell: UITableViewCell {
     @IBOutlet weak var aliasLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var minorLabel: UILabel!
+    @IBOutlet weak var uuidLabel: UILabel!
     
     @IBOutlet weak var activeToggle: UIButton!
     @IBOutlet weak var progressView : UIProgressView!
@@ -25,6 +26,7 @@ class beaconCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.aliasLabel.text = nil
+        self.uuidLabel.text = nil
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,6 +37,7 @@ class beaconCell: UITableViewCell {
         self.aliasLabel.text = nil
         self.majorLabel.text = nil
         self.minorLabel.text = nil
+        self.uuidLabel.text = nil
         self.progressView.setProgress(1, animated: false)
     }
     
@@ -45,6 +48,7 @@ class beaconCell: UITableViewCell {
         self.aliasLabel.text = beacon.alias
         self.majorLabel.text = String(beacon.major)
         self.minorLabel.text = String(beacon.minor)
+        self.uuidLabel.text = String(beacon.UUID)
         
         self.progressView.setProgress(1, animated: false)
         
