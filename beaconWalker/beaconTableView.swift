@@ -32,21 +32,23 @@ class beaconTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         let beacon = Beacon.beacons[indexPath.item]
         
         cell.setup(beacon)
+        
         cell.setNeedsLayout()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! beaconCell
         let beacon = Beacon.beacons[indexPath.item]
-        
-        if indexPath.item == 0 {
-            for cell in tableView.visibleCells as! [beaconCell] {
-                cell.resetDurationProgress()
-                cell.layer.backgroundColor = UIColor.clearColor().CGColor
+        if let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as? beaconCell {
+            if indexPath.item == 0 {
+                for cell in tableView.visibleCells as! [beaconCell] {
+                    cell.resetDurationProgress()
+                    cell.layer.backgroundColor = UIColor.clearColor().CGColor
+                }
             }
+            
+            selectedCell.animateDuration(beacon)
         }
-        
-        selectedCell.animateDuration(beacon)
+        beacon.hasBeenSequenced = true
     }
 
 }

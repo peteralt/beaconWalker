@@ -38,7 +38,9 @@ class beaconCell: UITableViewCell {
         self.majorLabel.text = nil
         self.minorLabel.text = nil
         self.uuidLabel.text = nil
-        self.progressView.setProgress(1, animated: false)
+        self.progressView.setProgress(0, animated: false)
+        
+        
     }
     
     func setup(beacon: Beacon) {
@@ -50,11 +52,19 @@ class beaconCell: UITableViewCell {
         self.minorLabel.text = String(beacon.minor)
         self.uuidLabel.text = String(beacon.UUID)
         
-        self.progressView.setProgress(1, animated: false)
+        
         
         self.setupActive(beacon.isActive)
         
         self.progressView.transform = CGAffineTransformMakeRotation(90 * CGFloat(M_PI)/180)
+        
+        if self.beacon.hasBeenSequenced {
+            self.highlightCell()
+            self.progressView.setProgress(1, animated: false)
+        } else {
+            self.unhighlightCell()
+            self.progressView.setProgress(0, animated: false)
+        }
         
     }
     
@@ -105,6 +115,15 @@ extension beaconCell {
 
 //MARK: Cell Animation
 extension beaconCell {
+    
+    func highlightCell() {
+        self.layer.backgroundColor = Helper.getColorGrey().CGColor
+    }
+    
+    func unhighlightCell() {
+        self.layer.backgroundColor = UIColor.clearColor().CGColor
+    }
+    
     func animateDuration(beacon: Beacon) {
         self.resetDurationProgress()
         
@@ -116,8 +135,9 @@ extension beaconCell {
         )
         
         UIView.animateWithDuration(1.0, animations: {
-            self.layer.backgroundColor = Helper.getColorGrey().CGColor
-        })
+            self.highlightCell()
+            })
+        
     }
     
     func resetDurationProgress() {
@@ -127,6 +147,7 @@ extension beaconCell {
                 self.progressView?.setProgress(0, animated: true)
             }
         )
+
     }
     
 }

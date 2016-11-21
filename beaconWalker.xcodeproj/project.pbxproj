@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A02C3021DA7E98A00E21B4C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A02C3011DA7E98A00E21B4C /* SnapshotHelper.swift */; };
 		8A2D8F511DA342E000631B29 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
 		8A571EE61DA5519E00443893 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4671DA30BED00BB30A8 /* Helper.swift */; };
 		8A571EEE1DA55ADF00443893 /* beaconWalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A571EED1DA55ADF00443893 /* beaconWalkerUITests.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A02C3011DA7E98A00E21B4C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		8A571EEB1DA55ADF00443893 /* beaconWalkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaconWalkerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A571EED1DA55ADF00443893 /* beaconWalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beaconWalkerUITests.swift; sourceTree = "<group>"; };
 		8A571EEF1DA55ADF00443893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		8A571EEC1DA55ADF00443893 /* beaconWalkerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				8A02C3011DA7E98A00E21B4C /* SnapshotHelper.swift */,
 				8A571EED1DA55ADF00443893 /* beaconWalkerUITests.swift */,
 				8A571EEF1DA55ADF00443893 /* Info.plist */,
 			);
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A571EEE1DA55ADF00443893 /* beaconWalkerUITests.swift in Sources */,
+				8A02C3021DA7E98A00E21B4C /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +521,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.peteralt.beaconWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -530,6 +535,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.peteralt.beaconWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -571,6 +577,7 @@
 				8A571EF41DA55ADF00443893 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A54DF0B41D9188C60078EE52 /* Build configuration list for PBXProject "beaconWalker" */ = {
 			isa = XCConfigurationList;

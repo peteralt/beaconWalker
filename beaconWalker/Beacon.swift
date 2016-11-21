@@ -21,6 +21,8 @@ class Beacon {
     
     var isActive : Bool = true
     
+    var hasBeenSequenced : Bool = false
+    
     init(major: Int, minor: Int, uniqueID: String?, UUID: String?, alias: String, duration: Double?) {
         self.major = major
         self.minor = minor
