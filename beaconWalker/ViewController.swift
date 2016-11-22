@@ -20,6 +20,9 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     
     @IBOutlet weak var versionLabel: UILabel!
     
+    
+    @IBOutlet weak var startSequenceButton: UIButton!
+    
     @IBOutlet weak var activeSequenceView: UIView!
     @IBOutlet weak var activeSequenceHeightConstraint: NSLayoutConstraint!
     
@@ -93,6 +96,10 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
             
         }
         self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func tapViewToToggleSequence(sender: AnyObject) {
+        self.startSequenceButton.sendActionsForControlEvents(.TouchUpInside)
     }
     
     @IBAction func toggleSequence(sender: AnyObject) {
