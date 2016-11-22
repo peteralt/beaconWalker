@@ -188,6 +188,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="u8Y-ex-HJE" id="wQM-8V-Q8W"/>
                                     <outlet property="delegate" destination="u8Y-ex-HJE" id="nIg-1c-Zrc"/>
+                                    <outletCollection property="gestureRecognizers" destination="Hsb-48-5aR" appends="YES" id="ETo-xf-i6i"/>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHi-rh-dlF" userLabel="Border View">
@@ -351,9 +352,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="u8Y-ex-HJE" customClass="beaconTableView" customModule="beaconWalker"/>
-                <tapGestureRecognizer id="Ty5-3W-knY">
+                <tapGestureRecognizer id="Ty5-3W-knY" userLabel="toggle Sequence Tap Recognizer">
                     <connections>
                         <action selector="tapViewToToggleSequence:" destination="BYZ-38-t0r" id="FkP-pj-8AP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Hsb-48-5aR" userLabel="Select Single Cell Tap Recognizer">
+                    <connections>
+                        <action selector="activateSingleBeaconOnDoubleTap:" destination="BYZ-38-t0r" id="LKl-on-EfK"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

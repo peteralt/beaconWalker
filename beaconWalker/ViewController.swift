@@ -48,7 +48,6 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         
         self.checkAppRequirements()
         
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -56,6 +55,8 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         
         self.bluetoothStatusView.layer.cornerRadius = self.bluetoothStatusView.frame.width / 2
         self.accessStatusView.layer.cornerRadius = self.accessStatusView.frame.width / 2
+        
+        self.displayAppRequirementStatus()
         
         self.choseBeaconFile()
 
@@ -98,6 +99,24 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
+    @IBAction func activateSingleBeaconOnDoubleTap(sender: AnyObject) {
+        
+        if (sender.state == UIGestureRecognizerState.Ended) {
+         
+            let touchLocation = sender.locationInView(sender.view)
+            let indexPath = self.beaconTableView.indexPathForRowAtPoint(touchLocation)
+            let cell = self.beaconTableView.cellForRowAtIndexPath(indexPath!) as! beaconCell
+            
+            self.beaconTableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: .Top)
+            
+            self.startSingleBeaconAdvertisement(cell.beacon, index: indexPath!.item)
+            
+            print("Found Cell: \(cell.beacon.alias)")
+            
+        }
+        
+    }
+    
     @IBAction func tapViewToToggleSequence(sender: AnyObject) {
         self.startSequenceButton.sendActionsForControlEvents(.TouchUpInside)
     }
@@ -108,57 +127,62 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
             return
         }
         
-        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse {
-            locationManager.requestWhenInUseAuthorization()
-        }
-        
-        if !Helper.Platform.isSimulator {
-        
-            if !self.isBluetoothActive() || !self.areLocationServicesAllowed() {
-                print("something isn't right, we need permissions")
-                let alertController = UIAlertController(title: "Please verify settings", message: "This app requires Bluetooth to be enabled and access to Location Services (while in use only).\nPlease verify settings and try again.", preferredStyle: .Alert)
-                let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
-                }
-                alertController.addAction(cancelAction)
-                
-                let settingsAction = UIAlertAction(title: "Go to Settings", style: .Default) { (action) in
-                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-                }
-                alertController.addAction(settingsAction)
-                
-                self.presentViewController(alertController, animated: true) {}
-                return
-            }
-        }
-        
         self.checkAppRequirements()
         
         self.sequencePlaying = !self.sequencePlaying
         if self.sequencePlaying {
-            
-            self.beaconSequencer.startSequence()
-            self.sequenceStatusView.backgroundColor = Helper.getColorGreen()
-            sender.setTitle("Stop Sequence", forState: .Normal)
-            
-            self.activeSequenceHeightConstraint.constant = 40
-            UIView.animateWithDuration(0.75, animations: {
-                self.view.layoutIfNeeded()
-            })
-            self.animateActiveSequenceView()
-            
-            
+            self.startSequence()
         } else {
-            self.beaconSequencer.stopSequence()
-            self.sequenceStatusView.backgroundColor = Helper.getColorRed()
-            sender.setTitle("Start Sequence", forState: .Normal)
-            if let selectedRow = self.beaconTableView.indexPathForSelectedRow {
-                self.beaconTableView.deselectRowAtIndexPath(selectedRow, animated: true)
-            }
-            self.activeSequenceHeightConstraint.constant = 0
-            UIView.animateWithDuration(0.75, animations: {
-                self.view.layoutIfNeeded()
-            })
+            self.stopSequence()
         }
+    }
+    
+    func startSingleBeaconAdvertisement(beacon: Beacon, index: Int) {
+        
+        self.beaconSequencer.stopSequence()
+        
+        for cell in self.beaconTableView.visibleCells as! [beaconCell] {
+            cell.resetDurationProgress()
+            cell.layer.backgroundColor = UIColor.clearColor().CGColor
+        }
+        
+        self.checkAppRequirements()
+        
+        self.sequenceStatusView.backgroundColor = Helper.getColorGreen()
+        self.startSequenceButton.setTitle("Stop Advertisement", forState: .Normal)
+        
+        self.activeSequenceHeightConstraint.constant = 40
+        UIView.animateWithDuration(0.75, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.beaconDidProgress(beacon, index: index)
+        self.sequencePlaying = true
+    }
+    
+    func startSequence() {
+        self.beaconSequencer.startSequence()
+        self.sequenceStatusView.backgroundColor = Helper.getColorGreen()
+        self.startSequenceButton.setTitle("Stop Sequence", forState: .Normal)
+        
+        self.activeSequenceHeightConstraint.constant = 40
+        UIView.animateWithDuration(0.75, animations: {
+            self.view.layoutIfNeeded()
+        })
+        self.animateActiveSequenceView()
+
+    }
+    
+    func stopSequence() {
+        self.beaconSequencer.stopSequence()
+        self.sequenceStatusView.backgroundColor = Helper.getColorRed()
+        self.startSequenceButton.setTitle("Start Sequence", forState: .Normal)
+        if let selectedRow = self.beaconTableView.indexPathForSelectedRow {
+            self.beaconTableView.deselectRowAtIndexPath(selectedRow, animated: true)
+        }
+        self.activeSequenceHeightConstraint.constant = 0
+        UIView.animateWithDuration(0.75, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     func beaconDidProgress(beacon: Beacon, index: Int) {
@@ -218,6 +242,34 @@ extension ViewController {
     }
     
     private func checkAppRequirements() {
+        
+        if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.AuthorizedWhenInUse {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        
+        if !Helper.Platform.isSimulator {
+            
+            if !self.isBluetoothActive() || !self.areLocationServicesAllowed() {
+                print("something isn't right, we need permissions")
+                let alertController = UIAlertController(title: "Please verify settings", message: "This app requires Bluetooth to be enabled and access to Location Services (while in use only).\nPlease verify settings and try again.", preferredStyle: .Alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .Cancel) { (action) in
+                }
+                alertController.addAction(cancelAction)
+                
+                let settingsAction = UIAlertAction(title: "Go to Settings", style: .Default) { (action) in
+                    UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+                }
+                alertController.addAction(settingsAction)
+                
+                self.presentViewController(alertController, animated: true) {}
+                return
+            }
+        }
+        
+        self.displayAppRequirementStatus()
+    }
+    
+    private func displayAppRequirementStatus() {
         if self.isBluetoothActive() {
             self.bluetoothStatusView.backgroundColor = Helper.getColorGreenDark()
         } else {

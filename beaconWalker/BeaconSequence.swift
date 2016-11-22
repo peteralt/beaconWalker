@@ -30,6 +30,9 @@ class BeaconSequence {
     
     func stopSequence() {
         self.sequenceTimer?.invalidate()
+        for beacon in self.beacons {
+            beacon.hasBeenSequenced = false
+        }
     }
     
     @objc func progressTimer() {
