@@ -169,6 +169,8 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
             self.view.layoutIfNeeded()
         })
         self.animateActiveSequenceView()
+        
+        UIApplication.sharedApplication().idleTimerDisabled = true
 
     }
     
@@ -183,6 +185,8 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         UIView.animateWithDuration(0.75, animations: {
             self.view.layoutIfNeeded()
         })
+        
+        UIApplication.sharedApplication().idleTimerDisabled = false
     }
     
     func beaconDidProgress(beacon: Beacon, index: Int) {
