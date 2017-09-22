@@ -9,5 +9,5 @@
 import Foundation
 
 protocol BeaconSequenceDelegate : class {
-    func beaconDidProgress(beacon: Beacon, index: Int)
+    func beaconDidProgress(_ beacon: Beacon, index: Int)
 }

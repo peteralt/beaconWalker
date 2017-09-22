@@ -18,7 +18,10 @@ class beaconWalkerUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
+        
+        let app = XCUIApplication()
+        setupSnapshot(app)
+        app.launch()
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -37,6 +40,19 @@ class beaconWalkerUITests: XCTestCase {
         
         XCTAssertTrue(XCUIApplication().sheets["Choose your data file"].buttons["beacons_demo"].exists)
         XCTAssertEqual(XCUIApplication().sheets["Choose your data file"].buttons["beacons_demo"].label, "beacons_demo")
+        snapshot("01JSONSelect")
+    }
+    
+    func testDemoFileLoad() {
+        let app = XCUIApplication()
+        let chooseYourDataFileSheet = app.sheets["Choose your data file"]
+        chooseYourDataFileSheet.buttons["beacons_demo"].tap()
+        
+        XCTAssertNotNil(app.tables.cells.containing(.staticText, identifier:"Alias #1"))
+        XCTAssertNotNil(app.tables.cells.containing(.staticText, identifier:"Alias #2"))
+        XCTAssertNotNil(app.tables.cells.containing(.staticText, identifier:"Alias #3"))
+        
+        snapshot("01MainApp")
         
     }
     

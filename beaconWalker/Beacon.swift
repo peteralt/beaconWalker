@@ -42,15 +42,15 @@ class Beacon {
         self.alias = alias
     }
     
-    private static let testFilePath = NSBundle.mainBundle().pathForResource("beacons_test", ofType: "json")
+    fileprivate static let testFilePath = Bundle.main.path(forResource: "beacons_test", ofType: "json")
     
-    private static let urlForTest : NSURL = NSURL.fileURLWithPath(testFilePath!)
+    fileprivate static let urlForTest : URL = URL(fileURLWithPath: testFilePath!)
     
-    private static let session: NSURLSession = NSURLSession.sharedSession()
+    fileprivate static let session: URLSession = URLSession.shared
     
     static var beacons : [Beacon] = []
     
-    func isEqualTo(beacon: Beacon) -> Bool {
+    func isEqualTo(_ beacon: Beacon) -> Bool {
         return (beacon.major == self.major && beacon.minor == self.minor && beacon.UUID == self.UUID)
     }
     
@@ -58,9 +58,9 @@ class Beacon {
 
     extension Beacon {
         
-        static func load(forTesting: Bool = false, filePath: NSURL?, completion: ([Beacon]) -> Void) {
+        static func load(_ forTesting: Bool = false, filePath: URL?, completion: @escaping ([Beacon]) -> Void) {
             
-            var url : NSURL!
+            var url : URL!
             
             if forTesting {
                 url = self.urlForTest
@@ -68,16 +68,16 @@ class Beacon {
                 url = filePath
             }
             
-            let task = session.dataTaskWithURL(url, completionHandler: { data, _,_ in
+            let task = session.dataTask(with: url, completionHandler: { data, _,_ in
                 var beacons : [Beacon] = []
                 
                 var jsonDictionary : NSDictionary
                 do {
-                    jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as! NSDictionary
+                    jsonDictionary = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions()) as! NSDictionary
                     if let devices = jsonDictionary["devices"] as? NSArray {
                         for device in devices {
-                            if let major = device.valueForKey("major") as? Int, minor = device.valueForKey("minor") as? Int, alias = device.valueForKey("alias") as? String {
-                                let beacon = Beacon(major: major, minor: minor, uniqueID: device.valueForKey("uniqueId") as? String, UUID: device.valueForKey("UUID") as? String, alias: alias, duration: device.valueForKey("duration") as? Double)
+                            if let major = (device as AnyObject).value(forKey: "major") as? Int, let minor = (device as AnyObject).value(forKey: "minor") as? Int, let alias = (device as AnyObject).value(forKey: "alias") as? String {
+                                let beacon = Beacon(major: major, minor: minor, uniqueID: (device as AnyObject).value(forKey: "uniqueId") as? String, UUID: (device as AnyObject).value(forKey: "UUID") as? String, alias: alias, duration: (device as AnyObject).value(forKey: "duration") as? Double)
                                 beacons.append(beacon)
                             }
                         }
@@ -93,12 +93,12 @@ class Beacon {
         
         static func createDemoFile() {
             // Copying a demo JSON file on first launch
-            let bundlePath = NSBundle.mainBundle().pathForResource("beacons_test", ofType: "json")
-            let destPath = Helper.getDocumentsDirectory().stringByAppendingString(Helper.Settings.beaconDemoFileName)
+            let bundlePath = Bundle.main.path(forResource: "beacons_test", ofType: "json")
+            let destPath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
             
-            if !NSFileManager.defaultManager().fileExistsAtPath(destPath) {
+            if !FileManager.default.fileExists(atPath: destPath) {
                 do {
-                    try NSFileManager.defaultManager().copyItemAtPath(bundlePath!, toPath: destPath)
+                    try FileManager.default.copyItem(atPath: bundlePath!, toPath: destPath)
                 } catch {
                     print(error)
                 }

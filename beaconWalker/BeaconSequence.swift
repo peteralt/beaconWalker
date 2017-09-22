@@ -10,13 +10,13 @@ import UIKit
 
 class BeaconSequence {
     
-    private var beacons : [Beacon]!
-    private var sequenceRunning = false
+    fileprivate var beacons : [Beacon]!
+    fileprivate var sequenceRunning = false
     
-    private var sequenceTimer : NSTimer!
-    private var sequenceIndex = 0
+    fileprivate var sequenceTimer : Timer!
+    fileprivate var sequenceIndex = 0
     
-    private var delegate : BeaconSequenceDelegate?
+    fileprivate var delegate : BeaconSequenceDelegate?
     
     init(beacons: [Beacon], delegate: BeaconSequenceDelegate?) {
         self.beacons = beacons
@@ -25,7 +25,7 @@ class BeaconSequence {
     
     func startSequence() {
         self.sequenceIndex = 0
-        self.sequenceTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(self.progressTimer), userInfo: nil, repeats: false)
+        self.sequenceTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.progressTimer), userInfo: nil, repeats: false)
     }
     
     func stopSequence() {
@@ -42,13 +42,13 @@ class BeaconSequence {
         
         if !beacon.isActive {
            self.stepSequence()
-            self.sequenceTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(self.progressTimer), userInfo: nil, repeats: false)
+            self.sequenceTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.progressTimer), userInfo: nil, repeats: false)
             return
         }
         
         delegate?.beaconDidProgress(beacon, index: self.sequenceIndex)
         
-        self.sequenceTimer = NSTimer.scheduledTimerWithTimeInterval(self.getDelayForCurrentBeacon(), target: self, selector: #selector(self.progressTimer), userInfo: nil, repeats: false)
+        self.sequenceTimer = Timer.scheduledTimer(timeInterval: self.getDelayForCurrentBeacon(), target: self, selector: #selector(self.progressTimer), userInfo: nil, repeats: false)
         
         self.stepSequence()
         
@@ -60,7 +60,7 @@ class BeaconSequence {
 
 extension BeaconSequence {
     
-    private func stepSequence() {
+    fileprivate func stepSequence() {
         self.sequenceIndex += 1
         
         if self.sequenceIndex >= self.beacons.count {
@@ -68,12 +68,12 @@ extension BeaconSequence {
         }
     }
     
-    private func getDelayForBeaconAtIndex(index: Int) -> Double {
+    fileprivate func getDelayForBeaconAtIndex(_ index: Int) -> Double {
         print("delay for beacon at index \(index): \(self.beacons[index].duration)")
         return self.beacons[index].duration
     }
     
-    private func getDelayForCurrentBeacon() -> Double {
+    fileprivate func getDelayForCurrentBeacon() -> Double {
         return self.getDelayForBeaconAtIndex(self.sequenceIndex)
     }
 }

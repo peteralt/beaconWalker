@@ -22,11 +22,11 @@ class Helper {
     //MARK: Colors
     
     // color scheme: https://color.adobe.com/Summer-Twilight-color-theme-8675918/edit/?copy=true&base=2&rule=Custom&selected=0&name=Copy%20of%20Summer%20Twilight&mode=rgb&rgbvalues=0.23137254901960785,0.34901960784313724,0.41568627450980394,0.25882352941176473,0.4627450980392157,0.4627450980392157,0.24705882352941178,0.6039215686274509,0.5098039215686274,0.6313725490196078,0.803921568627451,0.45098039215686275,0.9254901960784314,0.8588235294117647,0.3764705882352941&swatchOrder=0,1,2,3,4
-    private static let colorRed = "E14E52"
-    private static let colorGreen = "A1CD73"
-    private static let colorGrey = "E2E5ED"
-    private static let colorGreenDark = "3F9A82"
-    private static let colorYellow = "ECDB60"
+    fileprivate static let colorRed = "E14E52"
+    fileprivate static let colorGreen = "A1CD73"
+    fileprivate static let colorGrey = "E2E5ED"
+    fileprivate static let colorGreenDark = "3F9A82"
+    fileprivate static let colorYellow = "ECDB60"
     
     static func getColorRed() -> UIColor {
         return self.hexStringToUIColor(self.colorRed)
@@ -49,19 +49,19 @@ class Helper {
     }
 
     // http://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values-in-swift-ios
-    private static func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+    fileprivate static func hexStringToUIColor (_ hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
+            cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))
         }
         // replace with count for latest SWIFT version
         if (cString.characters.count != 6) {
-            return UIColor.grayColor()
+            return UIColor.gray
         }
         
         var rgbValue:UInt32 = 0
-        NSScanner(string: cString).scanHexInt(&rgbValue)
+        Scanner(string: cString).scanHexInt32(&rgbValue)
         
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -74,30 +74,30 @@ class Helper {
     //MARK: Version Info
     
     static func getBuildVersion() -> String {
-        let appInfo = NSBundle.mainBundle().infoDictionary as Dictionary<String,AnyObject>!
-        let bundleVersion      = appInfo["CFBundleVersion"] as! String
+        let appInfo = Bundle.main.infoDictionary as Dictionary<String,AnyObject>!
+        let bundleVersion      = appInfo?["CFBundleVersion"] as! String
         return bundleVersion
     }
     
     static func getVersion() -> String {
-        let appInfo = NSBundle.mainBundle().infoDictionary as Dictionary<String,AnyObject>!
-        let shortVersionString = appInfo["CFBundleShortVersionString"] as! String
+        let appInfo = Bundle.main.infoDictionary as Dictionary<String,AnyObject>!
+        let shortVersionString = appInfo?["CFBundleShortVersionString"] as! String
         return shortVersionString
     }
     
     //MARK: Filesystem
     
     static func getDocumentsDirectory() -> String {
-        let dir = try! NSFileManager().URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
-        return dir.path!
+        let dir = try! FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        return dir.path
     }
     
-    static func getAllJSONFiles() -> [NSURL]? {
-        let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static func getAllJSONFiles() -> [URL]? {
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         do {
             // Get the directory contents urls (including subfolders urls)
-            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtURL( documentsUrl, includingPropertiesForKeys: nil, options: [])
+            let directoryContents = try FileManager.default.contentsOfDirectory( at: documentsUrl, includingPropertiesForKeys: nil, options: [])
             
             return directoryContents.filter{ $0.pathExtension == "json" }
             

@@ -43,7 +43,7 @@ class beaconCell: UITableViewCell {
         
     }
     
-    func setup(beacon: Beacon) {
+    func setup(_ beacon: Beacon) {
         
         self.beacon = beacon
         
@@ -56,7 +56,7 @@ class beaconCell: UITableViewCell {
         
         self.setupActive(beacon.isActive)
         
-        self.progressView.transform = CGAffineTransformMakeRotation(90 * CGFloat(M_PI)/180)
+        self.progressView.transform = CGAffineTransform(rotationAngle: 90 * .pi/180)
         
         if self.beacon.hasBeenSequenced {
             self.highlightCell()
@@ -77,10 +77,10 @@ extension beaconCell {
     @IBAction func toggleActive() {
         if self.beacon.isActive {
             self.setInactive()
-            self.activeToggle.setTitle("OFF", forState: .Normal)
+            self.activeToggle.setTitle("OFF", for: UIControlState())
         } else {
             self.setActive()
-            self.activeToggle.setTitle("ON", forState: .Normal)
+            self.activeToggle.setTitle("ON", for: UIControlState())
         }
     }
     
@@ -101,7 +101,7 @@ extension beaconCell {
         self.activeToggle.backgroundColor = Helper.getColorRed()
     }
     
-    func setupActive(isActive: Bool) {
+    func setupActive(_ isActive: Bool) {
         if isActive {
             self.setActive()
         } else {
@@ -117,32 +117,32 @@ extension beaconCell {
 extension beaconCell {
     
     func highlightCell() {
-        self.layer.backgroundColor = Helper.getColorGrey().CGColor
+        self.layer.backgroundColor = Helper.getColorGrey().cgColor
     }
     
     func unhighlightCell() {
-        self.layer.backgroundColor = UIColor.clearColor().CGColor
+        self.layer.backgroundColor = UIColor.clear.cgColor
     }
     
-    func animateDuration(beacon: Beacon) {
+    func animateDuration(_ beacon: Beacon) {
         self.resetDurationProgress()
         
-        UIView.animateWithDuration(
-            beacon.duration,
+        UIView.animate(
+            withDuration: beacon.duration,
             animations: { [unowned self] in
                 self.progressView?.setProgress(1.0, animated: true)
             }
         )
         
-        UIView.animateWithDuration(1.0, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.highlightCell()
             })
         
     }
     
     func resetDurationProgress() {
-        UIView.animateWithDuration(
-            0.1,
+        UIView.animate(
+            withDuration: 0.1,
             animations: { [unowned self] in
                 self.progressView?.setProgress(0, animated: true)
             }

@@ -27,7 +27,7 @@ class beaconWalkerTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
@@ -80,23 +80,23 @@ class beaconWalkerTests: XCTestCase {
     
     func testCreatingDemoFile() {
         
-        let destPath = Helper.getDocumentsDirectory().stringByAppendingString(Helper.Settings.beaconDemoFileName)
+        let destPath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
         
         // remove the file if it exists
-        if NSFileManager.defaultManager().fileExistsAtPath(destPath) {
+        if FileManager.default.fileExists(atPath: destPath) {
             do {
-                try NSFileManager.defaultManager().removeItemAtPath(destPath)
+                try FileManager.default.removeItem(atPath: destPath)
             } catch {
                 print(error)
             }
         }
         
         // verify it's gone
-        XCTAssertFalse(NSFileManager.defaultManager().fileExistsAtPath(destPath))
+        XCTAssertFalse(FileManager.default.fileExists(atPath: destPath))
         // create it
         Beacon.createDemoFile()
         // verify it's there
-        XCTAssertTrue(NSFileManager.defaultManager().fileExistsAtPath(destPath))
+        XCTAssertTrue(FileManager.default.fileExists(atPath: destPath))
     }
     
     func testBeaconIsEqualTo() {

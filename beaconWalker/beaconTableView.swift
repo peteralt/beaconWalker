@@ -10,16 +10,16 @@ import UIKit
 
 class beaconTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    @objc func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    @objc func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @objc func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Beacon.beacons.count
     }
     
-    @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("beaconCell", forIndexPath: indexPath) as! beaconCell
+    @objc func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "beaconCell", for: indexPath) as! beaconCell
         let beacon = Beacon.beacons[indexPath.item]
         
         cell.setup(beacon)
@@ -27,22 +27,23 @@ class beaconTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("beaconCell", forIndexPath: indexPath) as! beaconCell
-        let beacon = Beacon.beacons[indexPath.item]
-        
-        cell.setup(beacon)
-        
-        cell.setNeedsLayout()
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if let cell = tableView.dequeueReusableCell(withIdentifier: "beaconCell", for: indexPath) as? beaconCell {
+//        let beacon = Beacon.beacons[indexPath.item]
+//        
+//        cell.setup(beacon)
+//        
+//        cell.setNeedsLayout()
+//        }
+//    }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let beacon = Beacon.beacons[indexPath.item]
-        if let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as? beaconCell {
+        if let selectedCell = tableView.cellForRow(at: indexPath) as? beaconCell {
             if indexPath.item == 0 {
                 for cell in tableView.visibleCells as! [beaconCell] {
                     cell.resetDurationProgress()
-                    cell.layer.backgroundColor = UIColor.clearColor().CGColor
+                    cell.layer.backgroundColor = UIColor.clear.cgColor
                 }
             }
             
