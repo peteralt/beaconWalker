@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import CoreBluetooth
+import MobileCoreServices
 
 class ViewController: UIViewController, BeaconSequenceDelegate {
     
@@ -31,6 +32,7 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     
     fileprivate let locationManager = CLLocationManager()
     fileprivate let peripheralManager = CBPeripheralManager()
+    fileprivate let btManager = CBCentralManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,16 +44,10 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.currentFileLabel.text = "Select Sequence"
         
         Beacon.createDemoFile()
-        
-        self.checkAppRequirements()
-        
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.choseBeaconFile()
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,30 +61,9 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     }
     
     @IBAction func choseBeaconFile() {
-        let controller = UIAlertController(title: "Choose your data file", message: "Use iTunes File Sharing to manage JSON files.", preferredStyle: UIAlertControllerStyle.actionSheet)
-        
-        if let files = Helper.getAllJSONFiles() {
-        
-            for file in files {
-                controller.addAction(UIAlertAction(title: "\((file.deletingPathExtension().lastPathComponent))", style: UIAlertActionStyle.default, handler: { action in
-                    
-                    self.currentFileLabel.text = (file.deletingPathExtension().lastPathComponent)
-                    
-                    let _ = Beacon.load(filePath: file, completion: { beacons in
-                        print("beacons loaded: \(beacons.count)")
-                        DispatchQueue.main.async {
-                            self.beaconTableView.reloadData()
-                            self.beaconSequencer = BeaconSequence(beacons: beacons, delegate: self)
-                            
-                        }
-                    })
-                    
-                }))
-            }
-            controller.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            
-        }
-        self.present(controller, animated: true, completion: nil)
+        let documentPickerController = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJSON)], in: .import)
+        documentPickerController.delegate = self
+        present(documentPickerController, animated: true, completion: nil)
     }
     
     @IBAction func activateSingleBeaconOnDoubleTap(_ sender: AnyObject) {
@@ -115,11 +90,11 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     
     @IBAction func toggleSequence(_ : AnyObject) {
         
+        self.checkAppRequirements()
+        
         if !(Beacon.beacons.count > 0) {
             return
         }
-        
-        self.checkAppRequirements()
         
         self.sequencePlaying = !self.sequencePlaying
         if self.sequencePlaying {
@@ -204,10 +179,27 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
 
 }
 
+extension ViewController: UIDocumentPickerDelegate {
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        self.currentFileLabel.text = (url.deletingPathExtension().lastPathComponent)
+
+        let _ = Beacon.load(filePath: url, completion: { beacons in
+            print("beacons loaded: \(beacons.count)")
+            DispatchQueue.main.async {
+                self.beaconTableView.reloadData()
+                self.beaconSequencer = BeaconSequence(beacons: beacons, delegate: self)
+
+            }
+        })
+    }
+    
+}
+
 extension ViewController {
     
     fileprivate func isBluetoothActive() -> Bool {
-        return self.peripheralManager.state == .poweredOn
+        return self.btManager.state == .poweredOn
     }
     
     // http://stackoverflow.com/questions/34861941/check-if-location-services-are-enabled-swift-ios-9
@@ -241,6 +233,7 @@ extension ViewController {
         
         if CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
+            return
         }
         
         if !Helper.Platform.isSimulator {
