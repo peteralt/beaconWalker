@@ -92,19 +92,41 @@ class Helper {
         return dir.path
     }
     
-    static func getAllJSONFiles() -> [URL]? {
-        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    static func saveDemoFileOnFirstAppStart() {
+        let sampleFilePath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
+        let sampleFilePathUrl = URL(fileURLWithPath: sampleFilePath)
         
-        do {
-            // Get the directory contents urls (including subfolders urls)
-            let directoryContents = try FileManager.default.contentsOfDirectory( at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+        let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents", isDirectory: true)
+        
+        if  iCloudDocumentsURL != nil {
+            print("iCloud is enabled")
+
+            //Create the Directory if it doesn't exist
+            if (!FileManager.default.fileExists(atPath: iCloudDocumentsURL!.path, isDirectory: nil)) {
+                print("Documents folder does not exist, trying to create it...")
+                //This gets skipped after initial run saying directory exists, but still don't see it on iCloud
+                do {
+                    try FileManager.default.createDirectory(at: iCloudDocumentsURL!, withIntermediateDirectories: true, attributes: nil)
+                    print("Documents folder successfully created.")
+                } catch {
+                    print("Error creating Documents folder!")
+                }
+            }
             
-            return directoryContents.filter{ $0.pathExtension == "json" }
+            let destinationFilePathWithFilename = iCloudDocumentsURL?.appendingPathComponent((sampleFilePathUrl.lastPathComponent))
             
-        } catch let error as NSError {
-            print(error.localizedDescription)
+            do {
+                print("Trying to copy file to iCloud Drive...")
+                
+                try FileManager.default.setUbiquitous(true, itemAt: sampleFilePathUrl, destinationURL: destinationFilePathWithFilename!)
+                print("File successfully copied.")
+                
+            } catch let error as NSError {
+                print("Error saving file to iCloud Drive: \(error.localizedDescription)")
+            }
+        } else {
+            print("iCloud is NOT enabled!")
         }
-        return nil
     }
     
     //MARK: Simulator detection

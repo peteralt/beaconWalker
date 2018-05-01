@@ -52,6 +52,7 @@
 		8A571EEB1DA55ADF00443893 /* beaconWalkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaconWalkerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A571EED1DA55ADF00443893 /* beaconWalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beaconWalkerUITests.swift; sourceTree = "<group>"; };
 		8A571EEF1DA55ADF00443893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A9B2C3F2097FBEE00428F86 /* beaconWalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = beaconWalker.entitlements; sourceTree = "<group>"; };
 		A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconSequence.swift; sourceTree = "<group>"; };
 		A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconSequenceDelegate.swift; sourceTree = "<group>"; };
 		A53EE4671DA30BED00BB30A8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -107,6 +108,13 @@
 			path = beaconWalkerUITests;
 			sourceTree = "<group>";
 		};
+		8A9B2C4020980A1300428F86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A54DF0B01D9188C60078EE52 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +122,7 @@
 				A5ECDE3F1D91A9E700FADD78 /* beaconWalkerTests */,
 				8A571EEC1DA55ADF00443893 /* beaconWalkerUITests */,
 				A54DF0BA1D9188C60078EE52 /* Products */,
+				8A9B2C4020980A1300428F86 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +139,7 @@
 		A54DF0BB1D9188C60078EE52 /* beaconWalker */ = {
 			isa = PBXGroup;
 			children = (
+				8A9B2C3F2097FBEE00428F86 /* beaconWalker.entitlements */,
 				A5D475C11DA2BA5200026A71 /* Helper */,
 				A5D475BC1DA2B02100026A71 /* TableView */,
 				A5D475B81DA2A89000026A71 /* data */,
@@ -258,6 +268,14 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = GYM5NHJ654;
 						LastSwiftMigration = 0930;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					A5ECDE3D1D91A9E700FADD78 = {
 						CreatedOnToolsVersion = 7.3;
@@ -534,8 +552,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = beaconWalker/beaconWalker.entitlements;
 				DEVELOPMENT_TEAM = GYM5NHJ654;
 				INFOPLIST_FILE = beaconWalker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peteralt.beaconWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,8 +569,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = beaconWalker/beaconWalker.entitlements;
 				DEVELOPMENT_TEAM = GYM5NHJ654;
 				INFOPLIST_FILE = beaconWalker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peteralt.beaconWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
