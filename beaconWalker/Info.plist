@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.6</string>
+	<string>1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2017.09.21.2</string>
+	<string>2018.05.01</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -31,6 +31,18 @@
 	<string>This application requires location access (while in use only) to simulate iBeacons (using Bluetooth LE).</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires location access (while in use only) to simulate iBeacons (using Bluetooth LE).</string>
+	<key>NSUbiquitousContainers</key>
+	<dict>
+		<key>iCloud.com.peteralt.beaconWalker</key>
+		<dict>
+			<key>NSUbiquitousContainerIsDocumentScopePublic</key>
+			<true/>
+			<key>NSUbiquitousContainerName</key>
+			<string>beaconWalker</string>
+			<key>NSUbiquitousContainerSupportedFolderLevels</key>
+			<string>One</string>
+		</dict>
+	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
