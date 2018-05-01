@@ -29,34 +29,34 @@ class Helper {
     fileprivate static let colorYellow = "ECDB60"
     
     static func getColorRed() -> UIColor {
-        return self.hexStringToUIColor(self.colorRed)
+        return self.hexStringToUIColor(hex: self.colorRed)
     }
     
     static func getColorGreen() -> UIColor {
-        return self.hexStringToUIColor(self.colorGreen)
+        return self.hexStringToUIColor(hex: self.colorGreen)
     }
     
     static func getColorGrey() -> UIColor {
-        return self.hexStringToUIColor(self.colorGrey)
+        return self.hexStringToUIColor(hex: self.colorGrey)
     }
     
     static func getColorGreenDark() -> UIColor {
-        return self.hexStringToUIColor(self.colorGreenDark)
+        return self.hexStringToUIColor(hex: self.colorGreenDark)
     }
     
     static func getColorYellow() -> UIColor {
-        return self.hexStringToUIColor(self.colorYellow)
+        return self.hexStringToUIColor(hex: self.colorYellow)
     }
 
     // http://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values-in-swift-ios
-    fileprivate static func hexStringToUIColor (_ hex:String) -> UIColor {
+    fileprivate static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))
+            cString.remove(at: cString.startIndex)
         }
-        // replace with count for latest SWIFT version
-        if (cString.characters.count != 6) {
+        
+        if ((cString.count) != 6) {
             return UIColor.gray
         }
         
@@ -74,13 +74,13 @@ class Helper {
     //MARK: Version Info
     
     static func getBuildVersion() -> String {
-        let appInfo = Bundle.main.infoDictionary as Dictionary<String,AnyObject>!
+        let appInfo = Bundle.main.infoDictionary as Dictionary<String,AnyObject>?
         let bundleVersion      = appInfo?["CFBundleVersion"] as! String
         return bundleVersion
     }
     
     static func getVersion() -> String {
-        let appInfo = Bundle.main.infoDictionary as Dictionary<String,AnyObject>!
+        let appInfo = Bundle.main.infoDictionary as Dictionary<String,AnyObject>?
         let shortVersionString = appInfo?["CFBundleShortVersionString"] as! String
         return shortVersionString
     }
