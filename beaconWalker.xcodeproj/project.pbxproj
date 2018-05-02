@@ -11,6 +11,7 @@
 		8A2D8F511DA342E000631B29 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
 		8A571EE61DA5519E00443893 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4671DA30BED00BB30A8 /* Helper.swift */; };
 		8A571EEE1DA55ADF00443893 /* beaconWalkerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A571EED1DA55ADF00443893 /* beaconWalkerUITests.swift */; };
+		8A86506D209962DA004CB3F6 /* HelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A86506C209962DA004CB3F6 /* HelperTests.swift */; };
 		A53EE4601DA2E28F00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
 		A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */; };
 		A53EE4661DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */; };
@@ -52,6 +53,7 @@
 		8A571EEB1DA55ADF00443893 /* beaconWalkerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beaconWalkerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A571EED1DA55ADF00443893 /* beaconWalkerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beaconWalkerUITests.swift; sourceTree = "<group>"; };
 		8A571EEF1DA55ADF00443893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A86506C209962DA004CB3F6 /* HelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperTests.swift; sourceTree = "<group>"; };
 		8A9B2C3F2097FBEE00428F86 /* beaconWalker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = beaconWalker.entitlements; sourceTree = "<group>"; };
 		A53EE45F1DA2E28F00BB30A8 /* BeaconSequence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconSequence.swift; sourceTree = "<group>"; };
 		A53EE4651DA2EB0300BB30A8 /* BeaconSequenceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconSequenceDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				A5ECDE401D91A9E700FADD78 /* beaconWalkerTests.swift */,
+				8A86506C209962DA004CB3F6 /* HelperTests.swift */,
 				A5ECDE421D91A9E700FADD78 /* Info.plist */,
 			);
 			path = beaconWalkerTests;
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A53EE4611DA2E4BB00BB30A8 /* BeaconSequence.swift in Sources */,
+				8A86506D209962DA004CB3F6 /* HelperTests.swift in Sources */,
 				A5ECDE411D91A9E700FADD78 /* beaconWalkerTests.swift in Sources */,
 				8A571EE61DA5519E00443893 /* Helper.swift in Sources */,
 				A5EB20D71D9AF79D00AA2DF3 /* Beacon.swift in Sources */,
