@@ -61,6 +61,10 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.view.layoutIfNeeded()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent // .default
+    }
+    
     @IBAction func choseBeaconFile() {
         let documentPickerController = UIDocumentPickerViewController(documentTypes: [String(kUTTypeJSON)], in: .import)
         documentPickerController.delegate = self
