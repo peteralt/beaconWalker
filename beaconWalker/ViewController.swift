@@ -43,7 +43,8 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.versionLabel.text = Helper.getVersion()
         self.currentFileLabel.text = "Select Sequence"
         
-        Beacon.createDemoFile()
+//        Beacon.createDemoFile()
+        Helper.saveDemoFileOnFirstAppStart()
     }
     
     override func viewDidAppear(_ animated: Bool) {
