@@ -92,7 +92,7 @@ class Helper {
         return dir
     }
     
-    static func saveDemoFileOnFirstAppStart() {
+    static func saveDemoFileToDocumentsDirectory() {
         let bundlePath = Bundle.main.path(forResource: "beacons_test", ofType: "json")
         let destPath = Helper.getDocumentsDirectory().path + Helper.Settings.beaconDemoFileName
         
@@ -104,9 +104,11 @@ class Helper {
                 print(error)
             }
         }
+    }
+    
+    static func saveDemoFileOnFirstAppStart() {
         
-//        let sampleFilePath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
-//        let sampleFilePathUrl = URL(fileURLWithPath: sampleFilePath)
+        Helper.saveDemoFileToDocumentsDirectory()
         
         let iCloudDocumentsURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents", isDirectory: true)
         

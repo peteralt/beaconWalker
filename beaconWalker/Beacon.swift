@@ -91,21 +91,21 @@ class Beacon {
             task.resume()
         }
         
-        static func createDemoFile() {
-            // Copying a demo JSON file on first launch
-            let bundlePath = Bundle.main.path(forResource: "beacons_test", ofType: "json")
-            let destPath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
-            
-            Helper.saveDemoFileOnFirstAppStart()
-            
-            
-            if !FileManager.default.fileExists(atPath: destPath) {
-                do {
-                    try FileManager.default.copyItem(atPath: bundlePath!, toPath: destPath)
-                    
-                } catch {
-                    print(error)
-                }
-            }
-        }
+//        static func createDemoFile() {
+//            // Copying a demo JSON file on first launch
+//            let bundlePath = Bundle.main.path(forResource: "beacons_test", ofType: "json")
+//            let destPath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
+//            
+//            Helper.saveDemoFileOnFirstAppStart()
+//            
+//            
+//            if !FileManager.default.fileExists(atPath: destPath) {
+//                do {
+//                    try FileManager.default.copyItem(atPath: bundlePath!, toPath: destPath)
+//                    
+//                } catch {
+//                    print(error)
+//                }
+//            }
+//        }
     }

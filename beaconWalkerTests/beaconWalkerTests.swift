@@ -20,18 +20,6 @@ class beaconWalkerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func testLoadingBeaconCount() {
         let _ = Beacon.load(true, filePath: nil, completion: { beacons in
             XCTAssertEqual(beacons.count, 3)
@@ -76,27 +64,6 @@ class beaconWalkerTests: XCTestCase {
                 }
             }
         })
-    }
-    
-    func testCreatingDemoFile() {
-        
-        let destPath = Helper.getDocumentsDirectory() + Helper.Settings.beaconDemoFileName
-        
-        // remove the file if it exists
-        if FileManager.default.fileExists(atPath: destPath) {
-            do {
-                try FileManager.default.removeItem(atPath: destPath)
-            } catch {
-                print(error)
-            }
-        }
-        
-        // verify it's gone
-        XCTAssertFalse(FileManager.default.fileExists(atPath: destPath))
-        // create it
-        Beacon.createDemoFile()
-        // verify it's there
-        XCTAssertTrue(FileManager.default.fileExists(atPath: destPath))
     }
     
     func testBeaconIsEqualTo() {
