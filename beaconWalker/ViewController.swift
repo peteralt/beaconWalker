@@ -73,7 +73,7 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     
     @IBAction func activateSingleBeaconOnDoubleTap(_ sender: AnyObject) {
         
-        if (sender.state == UIGestureRecognizerState.ended) {
+        if (sender.state == UIGestureRecognizer.State.ended) {
          
             let touchLocation = sender.location(in: sender.view)
             let indexPath = self.beaconTableView.indexPathForRow(at: touchLocation)
@@ -121,7 +121,7 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
         self.checkAppRequirements()
         
         self.sequenceStatusView.backgroundColor = Helper.getColorGreen()
-        self.startSequenceButton.setTitle("Stop Advertisement", for: UIControlState())
+        self.startSequenceButton.setTitle("Stop Advertisement", for: UIControl.State())
         
         self.activeSequenceHeightConstraint.constant = 40
         UIView.animate(withDuration: 0.75, animations: {
@@ -134,7 +134,7 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     func startSequence() {
         self.beaconSequencer.startSequence()
         self.sequenceStatusView.backgroundColor = Helper.getColorGreen()
-        self.startSequenceButton.setTitle("Stop Sequence", for: UIControlState())
+        self.startSequenceButton.setTitle("Stop Sequence", for: UIControl.State())
         
         self.activeSequenceHeightConstraint.constant = 40
         UIView.animate(withDuration: 0.75, animations: {
@@ -149,7 +149,7 @@ class ViewController: UIViewController, BeaconSequenceDelegate {
     func stopSequence() {
         self.beaconSequencer.stopSequence()
         self.sequenceStatusView.backgroundColor = Helper.getColorRed()
-        self.startSequenceButton.setTitle("Start Sequence", for: UIControlState())
+        self.startSequenceButton.setTitle("Start Sequence", for: UIControl.State())
         if let selectedRow = self.beaconTableView.indexPathForSelectedRow {
             self.beaconTableView.deselectRow(at: selectedRow, animated: true)
         }
@@ -251,7 +251,7 @@ extension ViewController {
                 alertController.addAction(cancelAction)
                 
                 let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (action) in
-                    UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
+                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
                 }
                 alertController.addAction(settingsAction)
                 

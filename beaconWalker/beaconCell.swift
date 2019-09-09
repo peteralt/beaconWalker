@@ -22,7 +22,7 @@ class beaconCell: UITableViewCell {
     
     //MARK: Init & Setup
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.aliasLabel.text = nil
@@ -77,10 +77,10 @@ extension beaconCell {
     @IBAction func toggleActive() {
         if self.beacon.isActive {
             self.setInactive()
-            self.activeToggle.setTitle("OFF", for: UIControlState())
+            self.activeToggle.setTitle("OFF", for: UIControl.State())
         } else {
             self.setActive()
-            self.activeToggle.setTitle("ON", for: UIControlState())
+            self.activeToggle.setTitle("ON", for: UIControl.State())
         }
     }
     
